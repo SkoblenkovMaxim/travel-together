@@ -1,5 +1,6 @@
 package ru.smartskills.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
@@ -7,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -49,5 +52,9 @@ public class User {
 
     @Column
     private String password;
+
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @Column
+    private LocalDateTime createdAt; // Дата и время создания профиля
 
 }
